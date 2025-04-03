@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Min Portfolio</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg, #ff6b6b, #f06595);
+      padding: 60px 20px;
+      text-align: center;
+      color: #fff;
+      position: relative;
+    }
+    header h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 20px;
+      margin-top: 0;
+    }
+    nav {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 600;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+    nav a:hover {
+      color: #ffdd57;
+    }
+    .projects-section {
+      padding: 60px 20px;
+    }
+    .projects-section h2 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 40px;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .project-card {
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    .project-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      /* Lazy loading */
+      loading: lazy;
+    }
+    .project-card .card-content {
+      padding: 20px;
+    }
+    .project-card h3 {
+      margin-top: 0;
+      font-size: 24px;
+      color: #333;
+    }
+    .project-card p {
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      color: #666;
+    }
+    .project-card a {
+      display: inline-block;
+      text-decoration: none;
+      color: #fff;
+      background-color: #ff6b6b;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    .project-card a:hover {
+      background-color: #f06595;
+    }
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+    
+    /* Modal-stilar */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.5);
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 8px;
+      position: relative;
+      /* Visuell fade-in */
+      animation: fadeIn 0.3s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .close {
+      color: #aaa;
+      position: absolute;
+      right: 20px;
+      top: 10px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a id="omMigBtn" href="#">Om mig</a>
+      <a id="kontaktBtn" href="#">Kontakt</a>
+    </nav>
+    <h1>Välkommen till min Portfolio</h1>
+    <p>Utforska mina projekt och se vad jag har skapat</p>
+  </header>
+
+  <section class="projects-section">
+    <h2>Mina Projekt</h2>
+    <div class="projects-grid">
+      <!-- Projekt 1: Python för nybörjare -->
+      <div class="project-card">
+        <img src="michael-pointner-sM_qkIb3lfs-unsplash.jpg" alt="Projekt 1">
+        <div class="card-content">
+          <h3>Projekt 1: Lär dig Python</h3>
+          <p>En webbplats som lär ut grunderna i Python – basen för nybörjare. Hitta handledningar, resurser och mycket mer.</p>
+          <a href="#" id="project1Link">Läs mer</a>
+        </div>
+      </div>
+      <!-- Projekt 2: Annons för Flameclicker -->
+      <div class="project-card">
+        <img src="michael-pointner-QZ4K0dk51eY-unsplash.jpg" alt="Projekt 2">
+        <div class="card-content">
+          <h3>Projekt 2: Flameclicker</h3>
+          <p>En annons för produkten Flameclicker – en spännande clicker med flammande grafik och innovativa funktioner.</p>
+          <a href="#" id="project2Link">Läs mer</a>
+        </div>
+      </div>
+      <!-- Projekt 3: Spelföretag -->
+      <div class="project-card">
+        <img src="steve-busch-vaknSP_Jrsg-unsplash.jpg" alt="Projekt 3">
+        <div class="card-content">
+          <h3>Projekt 3: Spelföretag</h3>
+          <p>En enkel hemsida om spelföretag med bra navigering och modernt innehåll.</p>
+          <a href="#" id="project3Link">Läs mer</a>
+        </div>
+      </div>
+      <!-- Projekt 4: Finansbolag -->
+      <div class="project-card">
+        <img src="jakob-owens-qnwN8gMaofs-unsplash.jpg" alt="Projekt 4">
+        <div class="card-content">
+          <h3>Projekt 4: Finansbolag</h3>
+          <p>En enkel hemsida med inspiration från Nordea – en finansbolag sida med tydlig layout och information.</p>
+          <a href="#" id="project4Link">Läs mer</a>
+        </div>
+      </div>
+      <!-- Projekt 5: Google Mockup -->
+      <div class="project-card">
+        <img src="jakob-owens-St5bHbV-Ga4-unsplash.jpg" alt="Projekt 5">
+        <div class="card-content">
+          <h3>Projekt 5: Google Mockup</h3>
+          <p>En mockup inspirerad av Google – en enkel webbdesign som visar upp en modern söksida med inspiration från Googles stil.</p>
+          <a href="#" id="project5Link">Läs mer</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Ditt Namn. Alla rättigheter förbehållna.</p>
+  </footer>
+  
+  <!-- Om mig Modal -->
+  <div id="omMigModal" class="modal">
+    <div class="modal-content">
+      <span class="close" data-modal="omMigModal">&times;</span>
+      <h2>Om mig</h2>
+      <p>Hej, jag heter Konstantin. Jag går på LBS Norra, klass AW24, och studerar Teknik - App och Webbutveckling.</p>
+    </div>
+  </div>
+  
+  <!-- Kontakt Modal -->
+  <div id="kontaktModal" class="modal">
+    <div class="modal-content">
+      <span class="close" data-modal="kontaktModal">&times;</span>
+      <h2>Kontakt</h2>
+      <p>Kontakta mig på: konstantin@example.com</p>
+    </div>
+  </div>
+  
+  <!-- Projekt 1 Modal: Python för nybörjare -->
+  <div id="project1Modal" class="modal">
+    <div class="modal-content">
+      <span class="close" data-modal="project1Modal">&times;</span>
+      <h2>Projekt 1: Lär dig Python</h2>
+      <p>Detta projekt är en webbplats dedikerad till att hjälpa nybörjare att lära sig Python. Här hittar du grunderna, handledningar och resurser för att komma igång med programmering i Python.</p>
+      <p><a href="https://n0n4nd00m.github.io/minegnapythonjo/" target="_blank">Besök webbplatsen</a></p>
+      <p><a href="mailto:inyexe@gmail.com?subject=Feedback%20för%20Projekt%201" target="_blank">Skicka feedback</a></p>
+    </div>
+  </div>
+  
+  <!-- Projekt 2 Modal: Annons för Flameclicker -->
+  <div id="project2Modal" class="modal">
+    <div class="modal-content">
+      <span class="close" data-modal="project2Modal">&times;</span>
+      <h2>Projekt 2: Flameclicker</h2>
+      <p>Detta projekt är en annons för produkten <strong>Flameclicker</strong> – en innovativ clicker med flammande grafik och spännande funktioner som kommer att underhålla dig.</p>
+      <p><a href="https://n0n4nd00m.github.io/flameclickerad/" target="_blank">Besök produktsidan</a></p>
+      <p><a href="mailto:inyexe@gmail.com?subject=Feedback%20för%20Projekt%202" target="_blank">Skicka feedback</a></p>
+    </div>
+  </div>
+  
+  <!-- Projekt 3 Modal: Spelföretag -->
+  <div id="project3Modal" class="modal">
+    <div class="modal-content">
+      <span class="close" data-modal="project3Modal">&times;</span>
+      <h2>Projekt 3: Spelföretag</h2>
+      <p>Detta projekt är en enkel hemsida om spelföretag med bra navigering och modernt innehåll. Utforska hur hemsidan är designad för att vara användarvänlig och informativ.</p>
+      <p><a href="https://n0n4nd00m.github.io/spelf-retag/" target="_blank">Besök webbplatsen</a></p>
+      <p><a href="mailto:inyexe@gmail.com?subject=Feedback%20för%20Projekt%203" target="_blank">Skicka feedback</a></p>
+    </div>
+  </div>
+  
+  <!-- Projekt 4 Modal: Finansbolag -->
+  <div id="project4Modal" class="modal">
+    <div class="modal-content">
+      <span class="close" data-modal="project4Modal">&times;</span>
+      <h2>Projekt 4: Finansbolag</h2>
+      <p>Detta projekt är en finansbolag sida inspirerad av Nordea – en enkel men funktionell hemsida med tydlig layout och information.</p>
+      <p><a href="https://n0n4nd00m.github.io/finansbolag/" target="_blank">Besök webbplatsen</a></p>
+      <p><a href="mailto:inyexe@gmail.com?subject=Feedback%20för%20Projekt%204" target="_blank">Skicka feedback</a></p>
+    </div>
+  </div>
+  
+  <!-- Projekt 5 Modal: Google Mockup -->
+  <div id="project5Modal" class="modal">
+    <div class="modal-content">
+      <span class="close" data-modal="project5Modal">&times;</span>
+      <h2>Projekt 5: Google Mockup</h2>
+      <p>Detta projekt är en mockup inspirerad av Google. Den visar upp en modern söksida med detaljerad design och interaktivitet, inspirerad av Googles stil.</p>
+      <p><a href="https://n0n4nd00m.github.io/mockup/" target="_blank">Besök webbplatsen</a></p>
+      <p><a href="mailto:inyexe@gmail.com?subject=Feedback%20för%20Projekt%205" target="_blank">Skicka feedback</a></p>
+    </div>
+  </div>
+  
+  <script>
+    // Öppna modaler vid klick
+    document.getElementById("omMigBtn").addEventListener("click", function(event) {
+      event.preventDefault();
+      document.getElementById("omMigModal").style.display = "block";
+    });
+
+    document.getElementById("kontaktBtn").addEventListener("click", function(event) {
+      event.preventDefault();
+      document.getElementById("kontaktModal").style.display = "block";
+    });
+
+    document.getElementById("project1Link").addEventListener("click", function(event) {
+      event.preventDefault();
+      document.getElementById("project1Modal").style.display = "block";
+    });
+
+    document.getElementById("project2Link").addEventListener("click", function(event) {
+      event.preventDefault();
+      document.getElementById("project2Modal").style.display = "block";
+    });
+    
+    document.getElementById("project3Link").addEventListener("click", function(event) {
+      event.preventDefault();
+      document.getElementById("project3Modal").style.display = "block";
+    });
+    
+    document.getElementById("project4Link").addEventListener("click", function(event) {
+      event.preventDefault();
+      document.getElementById("project4Modal").style.display = "block";
+    });
+    
+    document.getElementById("project5Link").addEventListener("click", function(event) {
+      event.preventDefault();
+      document.getElementById("project5Modal").style.display = "block";
+    });
+
+    // Stäng modaler när man klickar på stängknappen
+    var closeButtons = document.querySelectorAll(".close");
+    closeButtons.forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        var modalId = this.getAttribute("data-modal");
+        document.getElementById(modalId).style.display = "none";
+      });
+    });
+
+    // Stäng modal om man klickar utanför innehållet
+    window.onclick = function(event) {
+      var modals = document.querySelectorAll(".modal");
+      modals.forEach(function(modal) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      });
+    };
+  </script>
+</body>
+</html>
