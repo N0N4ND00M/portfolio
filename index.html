@@ -111,7 +111,7 @@
       padding: 20px;
       font-size: 14px;
     }
-    
+
     /* Modal-stilar */
     .modal {
       display: none;
@@ -215,13 +215,22 @@
           <a href="#" id="project5Link">Läs mer</a>
         </div>
       </div>
+      <!-- Projekt 6: Slut projekt -Dojo -->
+      <div class="project-card">
+        <img src="marsumilae-foUXcDxhuvs-unsplash.jpg" alt="Projekt 6">
+        <div class="card-content">
+          <h3>Projekt 6: Slut projekt - Dojo</h3>
+          <p>En projekt som jag ska hålla på med i årskurs 2.</p>
+          <a href="#" id="project6Link">Läs mer</a>
+        </div>
+      </div>
     </div>
   </section>
 
   <footer>
     <p>&copy; 2025-04-04, Konstantin.</p>
   </footer>
-  
+
   <!-- Om mig Modal -->
   <div id="omMigModal" class="modal">
     <div class="modal-content">
@@ -232,7 +241,7 @@
     <p><em>"Ain’t dying until I get rich."</em> 💸<br></p>
     </div>
   </div>
-  
+
   <!-- Kontakt Modal -->
   <div id="kontaktModal" class="modal">
     <div class="modal-content">
@@ -241,7 +250,7 @@
       <p>Kontakta mig på: inyexe@gmail.com</p>
     </div>
   </div>
-  
+
   <!-- Projekt 1 Modal: Python för nybörjare -->
   <div id="project1Modal" class="modal">
     <div class="modal-content">
@@ -252,7 +261,7 @@
       <p><a href="mailto:inyexe@gmail.com?subject=Feedback%20för%20Projekt%201" target="_blank">Skicka feedback</a></p>
     </div>
   </div>
-  
+
   <!-- Projekt 2 Modal: Annons för Flameclicker -->
   <div id="project2Modal" class="modal">
     <div class="modal-content">
@@ -263,7 +272,7 @@
       <p><a href="mailto:inyexe@gmail.com?subject=Feedback%20för%20Projekt%202" target="_blank">Skicka feedback</a></p>
     </div>
   </div>
-  
+
   <!-- Projekt 3 Modal: Spelföretag -->
   <div id="project3Modal" class="modal">
     <div class="modal-content">
@@ -274,7 +283,7 @@
       <p><a href="mailto:inyexe@gmail.com?subject=Feedback%20för%20Projekt%203" target="_blank">Skicka feedback</a></p>
     </div>
   </div>
-  
+
   <!-- Projekt 4 Modal: Finansbolag -->
   <div id="project4Modal" class="modal">
     <div class="modal-content">
@@ -285,7 +294,7 @@
       <p><a href="mailto:inyexe@gmail.com?subject=Feedback%20för%20Projekt%204" target="_blank">Skicka feedback</a></p>
     </div>
   </div>
-  
+
   <!-- Projekt 5 Modal: Google Mockup -->
   <div id="project5Modal" class="modal">
     <div class="modal-content">
@@ -296,7 +305,19 @@
       <p><a href="mailto:inyexe@gmail.com?subject=Feedback%20för%20Projekt%205" target="_blank">Skicka feedback</a></p>
     </div>
   </div>
+
+    <!-- Projekt 6 Modal: Slut projekt - Dojo -->
+    <div id="project6Modal" class="modal">
+      <div class="modal-content">
+        <span class="close" data-modal="project5Modal">&times;</span>
+        <h2>Projekt 6: Slut projekt - Dojo</h2>
+        <p>Detta är en ej slut projekt, jag ska hålla på med den i årskurs 2.</p>
+        <p><a href="https://n0n4nd00m.github.io/dojo/" target="_blank">Besök webbplatsen</a></p>
+        <p><a href="mailto:inyexe@gmail.com?subject=Feedback%20för%20Projekt%205" target="_blank">Skicka feedback</a></p>
+      </div>
+    </div>
   
+
   <script>
     // Öppna modaler vid klick
     document.getElementById("omMigBtn").addEventListener("click", function(event) {
@@ -318,20 +339,25 @@
       event.preventDefault();
       document.getElementById("project2Modal").style.display = "block";
     });
-    
+
     document.getElementById("project3Link").addEventListener("click", function(event) {
       event.preventDefault();
       document.getElementById("project3Modal").style.display = "block";
     });
-    
+
     document.getElementById("project4Link").addEventListener("click", function(event) {
       event.preventDefault();
       document.getElementById("project4Modal").style.display = "block";
     });
-    
+
     document.getElementById("project5Link").addEventListener("click", function(event) {
       event.preventDefault();
       document.getElementById("project5Modal").style.display = "block";
+    });
+
+    document.getElementById("project6Link").addEventListener("click", function(event) {
+      event.preventDefault();
+      document.getElementById("project6Modal").style.display = "block";
     });
 
     // Stäng modaler när man klickar på stängknappen
